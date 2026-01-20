@@ -1,0 +1,92 @@
+name: Deploy a new version
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 'lts/*'
+
+      - name: Install dependencies 📦
+        run: |
+          corepack enable
+          pnpm install
+
+      - name: Run linter 🕵️
+        run: |
+          pnpm run lint
+
+      - name: Run tests 🧪
+        run: |
+          pnpm run test
+
+      - name: Build 🛠
+        env:
+          BASE_PATH: '/ghpages-previews/${{ github.head_ref || github.ref_name }}'
+        run: |
+          pnpm run build-previewpage
+
+      - name: Save build into new folder 💾
+        run: |
+          mv build build-pr
+
+      - name: Build main and merge 🛠
+        run: |
+          git status
+          git fetch origin main --depth 1
+          git checkout origin/main
+          pnpm run build
+          mkdir -p "build/ghpages-previews"
+          mv build-pr "build/ghpages-previews/${{ github.head_ref || github.ref_name }}"
+
+      - name: Upload preview artifact 🛫
+        id: deployment
+        uses: actions/upload-pages-artifact@v3.0.1
+        with:
+          name: ghpages-preview-${{ github.head_ref || github.ref_name }}
+          path: build/
+
+  deploy:
+    needs: [build]
+
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy to GitHub Pages ✉️
+        id: deployment
+        uses: actions/deploy-pages@v4
+        with:
+          artifact_name: ghpages-preview-${{ github.head_ref || github.ref_name }}
+          preview: true
+
+      - name: Deployment Info ℹ️
+        run: |
+          echo ""
+          echo "Deployment finished! Preview should be available at the following URL:"
+          echo ""
+          echo "Preview page: ${{ steps.deployment.outputs.page_url }}/ghpages-previews/${{ github.head_ref || github.ref_name }}"
+          echo ""
+          echo "Main page: ${{ steps.deployment.outputs.page_url }}"
+          echo ""
