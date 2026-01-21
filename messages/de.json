@@ -16,7 +16,8 @@
 		"noteAboutParaglide": "Oh, und ich probiere diese Lokalisierungsbibliothek aus, die mit <code>sv create</code> mitgeliefert wurde: ParaglideJS.",
 		"seoDescription": "Eine kleine Sammlung hilfreicher Tools, um keine Werbung ertragen zu müssen. Beinhaltet ein paar Encoder/Decoder und Konvertierungswerkzeuge.",
 		"title": "Narigos Toolbox",
-		"toolbox": "Online-Toolbox"
+		"toolbox": "Online-Toolbox",
+		"linkToImprint": "Impressum"
 	},
 	"tools": {
 		"categories": {

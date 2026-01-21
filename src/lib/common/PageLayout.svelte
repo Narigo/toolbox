@@ -41,6 +41,9 @@
 	<main class="content-grid flex-grow" class:auto-rows-max={!stretch}>
 		{@render children()}
 	</main>
+	<footer>
+		<a href="https://narigo.dev/imprint" rel="external">{m['general.linkToImprint']()}</a>
+	</footer>
 </div>
 
 <style lang="postcss">

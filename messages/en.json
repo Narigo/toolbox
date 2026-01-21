@@ -16,7 +16,8 @@
 		"noteAboutParaglide": "Oh, and I'm going to try out this localisation that was added by <code>sv create</code>: ParaglideJS.",
 		"seoDescription": "A small collection of helpful tools, so I don't have to endure ads. Contains a few encoding and conversion tools.",
 		"title": "Narigo's Toolbox",
-		"toolbox": "Online-Toolbox"
+		"toolbox": "Online-Toolbox",
+		"linkToImprint": "Imprint"
 	},
 	"tools": {
 		"categories": {
