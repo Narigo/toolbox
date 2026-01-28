@@ -24,7 +24,7 @@
 		bottomLeftCorner: { x: 0, y: 0 },
 		bottomRightCorner: { x: 0, y: 0 }
 	});
-	let cornerPoints = $state<CornerPoints>(initialCornerPoints);
+	let cornerPoints: CornerPoints = $derived(initialCornerPoints);
 	let completeImage: HTMLCanvasElement;
 	let highlightedPaper: HTMLCanvasElement;
 
