@@ -38,7 +38,7 @@
 			</div>
 		</FullWidthSection>
 	</header>
-	<main class="content-grid flex-grow" class:auto-rows-max={!stretch}>
+	<main class="content-grid grow" class:auto-rows-max={!stretch}>
 		{@render children()}
 	</main>
 	<footer>
