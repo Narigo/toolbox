@@ -41,8 +41,12 @@
 	<main class="content-grid grow" class:auto-rows-max={!stretch}>
 		{@render children()}
 	</main>
-	<footer>
-		<a href="https://narigo.dev/imprint" rel="external">{m['general.linkToImprint']()}</a>
+	<footer class="content-grid">
+		<FullWidthSection>
+			<div class="glow p-4">
+				<a href="https://narigo.dev/imprint" rel="external">{m['general.linkToImprint']()}</a>
+			</div>
+		</FullWidthSection>
 	</footer>
 </div>
 
@@ -78,5 +82,39 @@
 			background: conic-gradient(transparent 45deg, currentColor 0 135deg, transparent 0) -0.25em
 				no-repeat;
 		}
+	}
+
+	@property --glow-hue {
+		syntax: '<number>';
+		inherits: true;
+		initial-value: 0;
+	}
+
+	@keyframes glow-pulse {
+		0% {
+			--glow-hue: 0;
+			--glow-alpha: 0.25;
+			--glow-blur: 24px;
+		}
+		50% {
+			--glow-hue: 180;
+			--glow-alpha: 0.55;
+			--glow-blur: 48px;
+		}
+		100% {
+			--glow-hue: 360;
+			--glow-alpha: 0.25;
+			--glow-blur: 24px;
+		}
+	}
+
+	.glow {
+		--glow-hue: 0;
+		--glow-alpha: 0.25;
+		--glow-blur: 24px;
+
+		box-shadow: 0 0 var(--glow-blur) hsl(var(--glow-hue) 50 50);
+
+		animation: glow-pulse 2.2s ease-in-out infinite;
 	}
 </style>
