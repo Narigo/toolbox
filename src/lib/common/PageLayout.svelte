@@ -94,17 +94,27 @@
 		0% {
 			--glow-hue: 0;
 			--glow-alpha: 0.25;
-			--glow-blur: 24px;
+			--glow-blur: 2rem;
 		}
-		50% {
+		25% {
 			--glow-hue: 180;
 			--glow-alpha: 0.55;
-			--glow-blur: 48px;
+			--glow-blur: 1rem;
 		}
-		100% {
+		50% {
 			--glow-hue: 360;
 			--glow-alpha: 0.25;
-			--glow-blur: 24px;
+			--glow-blur: 2rem;
+		}
+		50% {
+			--glow-hue: 540;
+			--glow-alpha: 0.55;
+			--glow-blur: 3rem;
+		}
+		100% {
+			--glow-hue: 720;
+			--glow-alpha: 0.25;
+			--glow-blur: 2rem;
 		}
 	}
 
@@ -115,6 +125,6 @@
 
 		box-shadow: 0 0 var(--glow-blur) hsl(var(--glow-hue) 50 50);
 
-		animation: glow-pulse 2.2s ease-in-out infinite;
+		animation: glow-pulse 2.2s linear infinite;
 	}
 </style>
