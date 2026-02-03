@@ -46,11 +46,6 @@
 			"seoDescription": "Free base64 encoder / decoder, running locally in your browser.",
 			"description": "Translates a string into and from base64 encoding."
 		},
-		"urlEncoding": {
-			"title": "URL Encoding",
-			"seoDescription": "Free URL encoder / decoder, running locally in your browser.",
-			"description": "Translates a string into and from URL encoding."
-		},
 		"documentScanner": {
 			"title": "Document Scanner",
 			"seoDescription": "Fast, free, and locally running scanner. Takes pictures of documents/papers, straightens them, and creates a PDF from them. The images are not uploaded but processed directly on the device.",
@@ -81,6 +76,16 @@
 				"noPermissionGiven": "Did not receive permission, to use the camera (and with it the flashlight function)!",
 				"noPermissionGranted": "Did not receive permission, to use the camera (and with it the flashlight function)!"
 			}
+		},
+		"randomTexter": {
+			"title": "Random texts",
+			"seoDescription": "Create random generators for whole sentences.",
+			"description": "Creates random generators for sentences like below next to imprint."
+		},
+		"urlEncoding": {
+			"title": "URL Encoding",
+			"seoDescription": "Free URL encoder / decoder, running locally in your browser.",
+			"description": "Translates a string into and from URL encoding."
 		}
 	}
 }

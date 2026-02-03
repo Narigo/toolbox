@@ -66,6 +66,16 @@
 				</a>
 			{/if}
 
+			{#if isInFilter(toolFilter, `${m['tools.randomTexter.title']()} ${m['tools.randomTexter.description']()}`)}
+				<a href={resolve('/random-texter')}>
+					<ToolCard
+						category="tools"
+						title={m['tools.randomTexter.title']()}
+						description={m['tools.randomTexter.description']()}
+					/>
+				</a>
+			{/if}
+
 			{#if isInFilter(toolFilter, `${m['tools.atonNifConverter.title']()} ${m['tools.atonNifConverter.description']()}`)}
 				<a href={resolve('/aton-nif')}>
 					<ToolCard

@@ -46,11 +46,6 @@
 			"seoDescription": "Kostenloser Base64 Encoder / Decoder, der lokal im Browser läuft.",
 			"description": "Wandelt eine Zeichenfolge in Base64 um und andersherum."
 		},
-		"urlEncoding": {
-			"title": "URL Verschlüsselung",
-			"seoDescription": "Kostenloser URL Encoder / Decoder, der lokal im Browser läuft.",
-			"description": "Wandelt eine Zeichenfolge in URL Encoding um und andersherum."
-		},
 		"documentScanner": {
 			"title": "Dokumentenscanner",
 			"seoDescription": "Schnell, kostenlos und lokal laufender Scanner. Nimmt Bilder von Dokumenten / Papieren auf, rückt sie gerade und erstellt daraus ein PDF. Die Bilder werden nicht hochgeladen, sondern direkt auf dem Gerät verarbeitet.",
@@ -80,6 +75,16 @@
 				"noFlashlightFound": "Keine Kamera mit Blitzlicht gefunden!",
 				"noPermissionGiven": "Keine Berechtigung erhalten, um die Kamera (und damit die Blitzlichtfunktion) zu verwenden!"
 			}
+		},
+		"randomTexter": {
+			"title": "Zufallstexte",
+			"seoDescription": "Erstelle einen Zufallsgenerator für einfache Sätze.",
+			"description": "Erstellt Zufallsgeneratoren für Sätze wie unten beim Impressum."
+		},
+		"urlEncoding": {
+			"title": "URL Verschlüsselung",
+			"seoDescription": "Kostenloser URL Encoder / Decoder, der lokal im Browser läuft.",
+			"description": "Wandelt eine Zeichenfolge in URL Encoding um und andersherum."
 		}
 	}
 }
