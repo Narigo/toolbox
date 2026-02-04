@@ -18,6 +18,27 @@
 			return `${result} ${next}`;
 		}, '')
 	);
+
+	function updateRandomSentence() {
+		sentenceParts = [...sentenceParts];
+	}
+	function addPartToColumn(columnIndex: number) {
+		sentenceParts = [
+			...sentenceParts.slice(0, columnIndex),
+			[...sentenceParts[columnIndex], ''],
+			...sentenceParts.slice(columnIndex + 1)
+		];
+	}
+	function removePartFromColumn(columnIndex: number, cellIndex: number) {
+		sentenceParts = [
+			...sentenceParts.slice(0, columnIndex),
+			[
+				...sentenceParts[columnIndex].slice(0, cellIndex),
+				...sentenceParts[columnIndex].slice(cellIndex + 1)
+			],
+			...sentenceParts.slice(columnIndex + 1)
+		];
+	}
 </script>
 
 <PageLayout
@@ -33,12 +54,19 @@
 				<li>
 					<ul class="grid">
 						{#each sentencePartTexts as _part, cellIndex}
-							<li><input bind:value={sentenceParts[columnIndex][cellIndex]} /></li>
+							<li class="grid grid-cols-[1fr_max-content] gap-2">
+								<input bind:value={sentenceParts[columnIndex][cellIndex]} /><button
+									class="w-full"
+									onclick={() => removePartFromColumn(columnIndex, cellIndex)}>🗑️</button
+								>
+							</li>
 						{/each}
+						<li><button class="w-full" onclick={() => addPartToColumn(columnIndex)}>+</button></li>
 					</ul>
 				</li>
 			{/each}
 		</ol>
 		<p>{randomSentence}</p>
+		<button onclick={updateRandomSentence}>Refresh sentence</button>
 	</FullWidthSection>
 </PageLayout>
