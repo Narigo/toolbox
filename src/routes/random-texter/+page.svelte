@@ -55,18 +55,40 @@
 					<ul class="grid">
 						{#each sentencePartTexts as _part, cellIndex}
 							<li class="grid grid-cols-[1fr_max-content] gap-2">
-								<input bind:value={sentenceParts[columnIndex][cellIndex]} /><button
+								<input bind:value={sentenceParts[columnIndex][cellIndex]} />
+								<button
+									type="button"
 									class="w-full"
 									onclick={() => removePartFromColumn(columnIndex, cellIndex)}>🗑️</button
 								>
 							</li>
 						{/each}
-						<li><button class="w-full" onclick={() => addPartToColumn(columnIndex)}>+</button></li>
+						<li>
+							<button type="button" class="w-full" onclick={() => addPartToColumn(columnIndex)}
+								>➕</button
+							>
+						</li>
 					</ul>
 				</li>
 			{/each}
 		</ol>
 		<p>{randomSentence}</p>
 		<button onclick={updateRandomSentence}>Refresh sentence</button>
+		<details>
+			<summary>Code</summary>
+
+			<pre>
+				{`
+const sentenceParts = ${JSON.stringify(sentenceParts, null, 2)};
+function getRandomText(): string {
+  return sentenceParts.reduce((result, part) => {
+    const next = part[Math.floor(Math.random() * part.length)];
+    if (!next) return result;
+    return \`\${result} \${next}\`;
+  }, '');
+}
+`}
+			</pre>
+		</details>
 	</FullWidthSection>
 </PageLayout>
