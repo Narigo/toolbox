@@ -18,6 +18,16 @@
 			return `${result} ${next}`;
 		}, '')
 	);
+	let codeResult = $derived(`
+const sentenceParts = ${JSON.stringify(sentenceParts, null, 2)};
+function getRandomText(): string {
+  return sentenceParts.reduce((result, part) => {
+    const next = part[Math.floor(Math.random() * part.length)];
+    if (!next) return result;
+    return \`\${result} \${next}\`;
+  }, '');
+}
+`);
 
 	function updateRandomSentence() {
 		sentenceParts = [...sentenceParts];
@@ -38,6 +48,10 @@
 			],
 			...sentenceParts.slice(columnIndex + 1)
 		];
+	}
+
+	async function copyToClipboard(code: string) {
+		await navigator.clipboard.writeText(code);
 	}
 </script>
 
@@ -75,19 +89,12 @@
 		<p>{randomSentence}</p>
 		<button onclick={updateRandomSentence}>Refresh sentence</button>
 		<details>
-			<summary>Code</summary>
+			<summary
+				>Code <button type="button" onclick={() => copyToClipboard(codeResult)}>📋</button></summary
+			>
 
 			<pre>
-				{`
-const sentenceParts = ${JSON.stringify(sentenceParts, null, 2)};
-function getRandomText(): string {
-  return sentenceParts.reduce((result, part) => {
-    const next = part[Math.floor(Math.random() * part.length)];
-    if (!next) return result;
-    return \`\${result} \${next}\`;
-  }, '');
-}
-`}
+				{codeResult}
 			</pre>
 		</details>
 	</FullWidthSection>
