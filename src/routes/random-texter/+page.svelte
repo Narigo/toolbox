@@ -63,21 +63,21 @@ function getRandomText(): string {
 >
 	<FullWidthSection class="grid-rows-[max-content_1fr] gap-4">
 		<p>Trying to recreate a simple random text generator</p>
-		<ol class="flex flex-row gap-2">
+		<ol class="flex flex-row gap-4">
 			{#each sentenceParts as sentencePartTexts, columnIndex}
 				<li>
-					<ul class="grid">
+					<ul class="grid gap-2">
 						{#each sentencePartTexts as _part, cellIndex}
-							<li class="grid grid-cols-[1fr_max-content] gap-2">
+							<li class="grid grid-cols-[1fr_max-content]">
 								<input bind:value={sentenceParts[columnIndex][cellIndex]} />
 								<button
 									type="button"
-									class="w-full"
+									class="w-full bg-red-50 px-2"
 									onclick={() => removePartFromColumn(columnIndex, cellIndex)}>🗑️</button
 								>
 							</li>
 						{/each}
-						<li>
+						<li class="grid rounded-b-4xl bg-blue-50 p-2">
 							<button type="button" class="w-full" onclick={() => addPartToColumn(columnIndex)}
 								>➕</button
 							>
