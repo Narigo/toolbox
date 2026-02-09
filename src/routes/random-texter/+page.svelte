@@ -62,7 +62,6 @@ function getRandomText(): string {
 	description={m['tools.randomTexter.seoDescription']()}
 >
 	<FullWidthSection class="grid-rows-[max-content_1fr] gap-4">
-		<p>Trying to recreate a simple random text generator</p>
 		<ol class="flex flex-row gap-4">
 			{#each sentenceParts as sentencePartTexts, columnIndex}
 				<li>
