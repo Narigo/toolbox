@@ -80,7 +80,8 @@
 		"randomTexter": {
 			"title": "Random texts",
 			"seoDescription": "Create random generators for whole sentences.",
-			"description": "Creates random generators for sentences like below next to imprint."
+			"description": "Creates random generators for sentences like below next to imprint.",
+			"refreshButton": "New sentence"
 		},
 		"urlEncoding": {
 			"title": "URL Encoding",

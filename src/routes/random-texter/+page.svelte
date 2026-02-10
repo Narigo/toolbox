@@ -86,7 +86,7 @@ function getRandomText(): string {
 			{/each}
 		</ol>
 		<p>{randomSentence}</p>
-		<button onclick={updateRandomSentence}>Refresh sentence</button>
+		<button onclick={updateRandomSentence}>{m['tools.randomTexter.refreshButton']()}</button>
 		<details>
 			<summary
 				>Code <button type="button" onclick={() => copyToClipboard(codeResult)}>📋</button></summary

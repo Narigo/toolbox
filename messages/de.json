@@ -79,7 +79,8 @@
 		"randomTexter": {
 			"title": "Zufallstexte",
 			"seoDescription": "Erstelle einen Zufallsgenerator für einfache Sätze.",
-			"description": "Erstellt Zufallsgeneratoren für Sätze wie unten beim Impressum."
+			"description": "Erstellt Zufallsgeneratoren für Sätze wie unten beim Impressum.",
+			"refreshButton": "Neuer Satz"
 		},
 		"urlEncoding": {
 			"title": "URL Verschlüsselung",
