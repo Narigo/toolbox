@@ -3,24 +3,9 @@
 	import FullWidthSection from '$lib/common/FullWidthSection.svelte';
 	import PageLayout from '$lib/common/PageLayout.svelte';
 	import { m } from '$lib/paraglide/messages';
-	import { getLocale } from '$lib/paraglide/runtime';
+	import { getInitialContent } from './get-initial-content.ts';
 
-	const initialDe = [
-		['Mit Liebe', 'Unter hohem Druck'],
-		['für das beste Publikum', 'für die Menschheit', 'ohne zu zweifeln', ''],
-		['von einer Horde Affen', 'von jemandem, dem es wichtig ist,'],
-		['erschaffen', 'gebaut']
-	];
-	const initialEn = [
-		['Created', 'Made'],
-		['with love', 'under pressure'],
-		['for the best audience', 'for humanity', 'without hesitation', ''],
-		['by a horde of apes', 'by someone who cares']
-	];
-
-	const initial = getLocale() === 'de' ? initialDe : initialEn;
-
-	let sentenceParts = $state(initial);
+	let sentenceParts = $state(getInitialContent());
 
 	let randomSentence = $derived(
 		sentenceParts.reduce((result, part) => {
