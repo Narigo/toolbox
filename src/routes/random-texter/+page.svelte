@@ -3,7 +3,7 @@
 	import FullWidthSection from '$lib/common/FullWidthSection.svelte';
 	import PageLayout from '$lib/common/PageLayout.svelte';
 	import { m } from '$lib/paraglide/messages';
-	import { getInitialContent } from './get-initial-content.ts';
+	import { getInitialContent } from './get-initial-content';
 
 	let sentenceParts = $state(getInitialContent());
 
