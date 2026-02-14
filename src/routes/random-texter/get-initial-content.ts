@@ -1,6 +1,6 @@
 import { getLocale } from "$lib/paraglide/runtime";
 
-export function getInitialContent() {
+function defaultContent() {
     const initialDe = [
         ["Mit Liebe", "Unter hohem Druck"],
         [
@@ -21,4 +21,29 @@ export function getInitialContent() {
     const initial = getLocale() === "de" ? initialDe : initialEn;
 
     return initial;
+}
+
+export function getInitialContent() {
+    const existingTexts = localStorage.getItem("tools.randomtexter.texts");
+    if (existingTexts === null) {
+        return defaultContent();
+    }
+
+    try {
+        const js = JSON.parse(existingTexts);
+        if (!Array.isArray(js)) {
+            return defaultContent();
+        }
+        if (
+            !js.every((element) =>
+                Array.isArray(element) &&
+                element.every((x) => typeof x === "string")
+            )
+        ) {
+            return defaultContent();
+        }
+        return js;
+    } catch {
+        return defaultContent();
+    }
 }
