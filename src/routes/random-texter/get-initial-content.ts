@@ -1,4 +1,11 @@
+import { browser } from "$app/environment";
 import { getLocale } from "$lib/paraglide/runtime";
+
+const LOCAL_STORAGE_KEY = "tools.randomtexter.texts";
+
+export function saveToLocalStorage(content: Array<Array<string>>) {
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(content));
+}
 
 function defaultContent() {
     const initialDe = [
@@ -24,7 +31,11 @@ function defaultContent() {
 }
 
 export function getInitialContent() {
-    const existingTexts = localStorage.getItem("tools.randomtexter.texts");
+    if (!browser) {
+        return defaultContent();
+    }
+
+    const existingTexts = localStorage.getItem(LOCAL_STORAGE_KEY);
     if (existingTexts === null) {
         return defaultContent();
     }

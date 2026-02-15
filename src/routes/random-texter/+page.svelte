@@ -3,7 +3,7 @@
 	import FullWidthSection from '$lib/common/FullWidthSection.svelte';
 	import PageLayout from '$lib/common/PageLayout.svelte';
 	import { m } from '$lib/paraglide/messages';
-	import { getInitialContent } from './get-initial-content';
+	import { getInitialContent, saveToLocalStorage } from './get-initial-content';
 
 	let sentenceParts = $state(getInitialContent());
 
@@ -49,6 +49,10 @@ function getRandomText(): string {
 	async function copyToClipboard(code: string) {
 		await navigator.clipboard.writeText(code);
 	}
+
+	function save() {
+		saveToLocalStorage(sentenceParts);
+	}
 </script>
 
 <PageLayout
@@ -82,7 +86,10 @@ function getRandomText(): string {
 			{/each}
 		</ol>
 		<p>{randomSentence}</p>
-		<button onclick={updateRandomSentence}>{m['tools.randomTexter.refreshButton']()}</button>
+		<div>
+			<button type="button" onclick={updateRandomSentence}>{m['tools.randomTexter.refreshButton']()}</button>
+			<button type="button" onclick={save}>{m['tools.randomTexter.saveButton']()}</button>
+		</div>
 		<details>
 			<summary
 				>Code <button type="button" onclick={() => copyToClipboard(codeResult)}>📋</button></summary
