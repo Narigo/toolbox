@@ -28,6 +28,12 @@ function getRandomText(): string {
 	function updateRandomSentence() {
 		sentenceParts = [...sentenceParts];
 	}
+	function removeColumn(columnIndex: number) {
+		sentenceParts = [
+			...sentenceParts.slice(0, columnIndex),
+			...sentenceParts.slice(columnIndex + 1)
+		];
+	}
 	function addPartToColumn(columnIndex: number) {
 		sentenceParts = [
 			...sentenceParts.slice(0, columnIndex),
@@ -53,6 +59,10 @@ function getRandomText(): string {
 	function save() {
 		saveToLocalStorage(sentenceParts);
 	}
+
+	function addColumn() {
+		sentenceParts = [...sentenceParts, ['']];
+	}
 </script>
 
 <PageLayout
@@ -66,6 +76,10 @@ function getRandomText(): string {
 			{#each sentenceParts as sentencePartTexts, columnIndex}
 				<li>
 					<ul class="grid gap-2">
+						<li class="grid rounded-t-4xl bg-red-50">
+							<button class="p-2" type="button" onclick={() => removeColumn(columnIndex)}>🗑️</button
+							>
+						</li>
 						{#each sentencePartTexts as _part, cellIndex}
 							<li class="grid grid-cols-[1fr_max-content]">
 								<input bind:value={sentenceParts[columnIndex][cellIndex]} />
@@ -76,18 +90,23 @@ function getRandomText(): string {
 								>
 							</li>
 						{/each}
-						<li class="grid rounded-b-4xl bg-blue-50 p-2">
-							<button type="button" class="w-full" onclick={() => addPartToColumn(columnIndex)}
+						<li class="grid rounded-b-4xl bg-blue-50">
+							<button type="button" class="w-full p-2" onclick={() => addPartToColumn(columnIndex)}
 								>➕</button
 							>
 						</li>
 					</ul>
 				</li>
 			{/each}
+			<li class="grid rounded-r-4xl bg-blue-50">
+				<button type="button" class="w-full p-2" onclick={() => addColumn()}>➕</button>
+			</li>
 		</ol>
 		<p>{randomSentence}</p>
 		<div>
-			<button type="button" onclick={updateRandomSentence}>{m['tools.randomTexter.refreshButton']()}</button>
+			<button type="button" onclick={updateRandomSentence}
+				>{m['tools.randomTexter.refreshButton']()}</button
+			>
 			<button type="button" onclick={save}>{m['tools.randomTexter.saveButton']()}</button>
 		</div>
 		<details>
