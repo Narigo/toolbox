@@ -42,6 +42,9 @@ function getRandomText(): string {
 		];
 	}
 	function removePartFromColumn(columnIndex: number, cellIndex: number) {
+		if (sentenceParts[columnIndex].length === 1) {
+			return removeColumn(columnIndex);
+		}
 		sentenceParts = [
 			...sentenceParts.slice(0, columnIndex),
 			[
