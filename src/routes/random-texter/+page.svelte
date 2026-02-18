@@ -63,8 +63,12 @@ function getRandomText(): string {
 		saveToLocalStorage(sentenceParts);
 	}
 
-	function addColumn() {
-		sentenceParts = [...sentenceParts, ['']];
+	function addColumn(columnIndex: number) {
+		sentenceParts = [
+			...sentenceParts.slice(0, columnIndex),
+			[''],
+			...sentenceParts.slice(columnIndex)
+		];
 	}
 </script>
 
@@ -77,7 +81,10 @@ function getRandomText(): string {
 	<FullWidthSection class="grid-rows-[max-content_1fr] gap-4">
 		<ol class="flex flex-row gap-4">
 			{#each sentenceParts as sentencePartTexts, columnIndex}
-				<li>
+				<li class="relative">
+					<button type="button" class="absolute -left-6 p-2 bg-blue-50" onclick={() => addColumn(columnIndex)}
+						>➕</button
+					>
 					<ul class="grid gap-2">
 						<li class="grid rounded-t-4xl bg-red-50">
 							<button class="p-2" type="button" onclick={() => removeColumn(columnIndex)}>🗑️</button
@@ -102,7 +109,9 @@ function getRandomText(): string {
 				</li>
 			{/each}
 			<li class="grid rounded-r-4xl bg-blue-50">
-				<button type="button" class="w-full p-2" onclick={() => addColumn()}>➕</button>
+				<button type="button" class="w-full p-2" onclick={() => addColumn(sentenceParts.length)}
+					>➕</button
+				>
 			</li>
 		</ol>
 		<p>{randomSentence}</p>
