@@ -79,11 +79,13 @@ function getRandomText(): string {
 	description={m['tools.randomTexter.seoDescription']()}
 >
 	<FullWidthSection class="grid-rows-[max-content_1fr] gap-4">
-		<ol class="flex flex-row gap-4">
+		<ol class="flex flex-row gap-4 pt-8">
 			{#each sentenceParts as sentencePartTexts, columnIndex}
 				<li class="relative">
-					<button type="button" class="absolute -left-6 p-2 bg-blue-50" onclick={() => addColumn(columnIndex)}
-						>➕</button
+					<button
+						type="button"
+						class="absolute -top-8 -left-12 w-20 rounded-b-4xl h-16 bg-blue-50 p-2 [corner-shape:scoop]"
+						onclick={() => addColumn(columnIndex)}>➕</button
 					>
 					<ul class="grid gap-2">
 						<li class="grid rounded-t-4xl bg-red-50">
